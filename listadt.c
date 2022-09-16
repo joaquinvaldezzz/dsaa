@@ -131,10 +131,6 @@ void insert()
   {
     printf("Enter the element you want to insert: ");
     scanf("%d", &value);
-    for (i = position; i < n; i += 1)
-    {
-      b[i + 1] = value;
-    }
 
     n += 1;
 
