@@ -15,3 +15,9 @@ Description here
    ```sh
    cd dsaa-211
    ```
+
+3. Create a dist folder
+
+   ```sh
+   mkdir dist
+   ```
