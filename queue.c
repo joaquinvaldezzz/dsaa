@@ -38,7 +38,8 @@ int main()
         printf("\n## Queue is Empty!");
       else
       {
-        printf("\n## Position : %d , Remove Value  : %d ", front, arr_queue[front]);
+        printf("\n## Position : %d , Remove Value  : %d ",
+               front, arr_queue[front]);
         front++;
       }
       break;
