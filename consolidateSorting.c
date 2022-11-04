@@ -6,6 +6,7 @@ void mergeSort(int a[], int l, int r);
 void insertionSort(int a[], int length);
 void selectionSort(int a[], int length);
 void quickSort(int a[], int left, int right);
+void heapify(int arr[], int N, int i);
 void heapSort(int a[], int length);
 void input();
 void display(int a[], int length);
@@ -69,7 +70,11 @@ int main()
       display(a, n);
       break;
     case 6: // Heap Sort
-
+      input();
+      display(a, n);
+      printf("\n");
+      heapSort(a, n);
+      display(a, n);
       break;
     case 7: // Close the program
       return -1;
@@ -77,7 +82,7 @@ int main()
     default:
       printf("Program is exiting.");
     }
-  } while (choice <= 5);
+  } while (choice <= 6);
 
   return 0;
 }
@@ -239,6 +244,63 @@ void quickSort(int a[], int left, int right)
 
     quickSort(a, left, p - 1);
     quickSort(a, p + 1, right);
+  }
+}
+
+void heapify(int arr[], int N, int i)
+{
+  // Find largest among root, left child and right child
+
+  // Initialize largest as root
+  int largest = i;
+
+  // left = 2*i + 1
+  int left = 2 * i + 1;
+
+  // right = 2*i + 2
+  int right = 2 * i + 2;
+
+  // If left child is larger than root
+  if (left < N && arr[left] > arr[largest])
+
+    largest = left;
+
+  // If right child is larger than largest
+  // so far
+  if (right < N && arr[right] > arr[largest])
+
+    largest = right;
+
+  // Swap and continue heapifying if root is not largest
+  // If largest is not root
+  if (largest != i)
+  {
+
+    swap(&arr[i], &arr[largest]);
+
+    // Recursively heapify the affected
+    // sub-tree
+    heapify(arr, N, largest);
+  }
+}
+
+void heapSort(int arr[], int N)
+{
+  int i;
+  // Build max heap
+  for (i = N / 2 - 1; i >= 0; i--)
+
+    heapify(arr, N, i);
+
+  // Heap sort
+  for (i = N - 1; i >= 0; i--)
+  {
+
+    swap(&arr[0], &arr[i]);
+
+    // Heapify root element to get highest element at
+    // root again
+    heapify(arr, i, 0);
   }
 }
 
